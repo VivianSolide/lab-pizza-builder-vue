@@ -34,16 +34,16 @@ const vm = new Vue({
     toggle(ingredientName) {
       for (let i = 0; i < this.ingredients.length; i++) {
         if (ingredientName === this.ingredients[i].name) {
-          this.ingredients[i].selected = !this.ingredients[i].selected
+          this.ingredients[i].selected = !this.ingredients[i].selected;
         }
       }
     },
   },
   filters: {
     capitalize(value) {
-      if (!value) return ''
-      value = value.toString()
-      return value.charAt(0).toUpperCase() + value.slice(1)
+      if (!value) return '';
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
     }
   },
   computed: {
