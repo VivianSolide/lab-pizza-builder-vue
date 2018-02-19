@@ -71,13 +71,15 @@
       <section v-if="isSelected('pepperonni')" :class="'pepperonni ingredient-' + n" v-for="n in 32"></section>
 
       <!-- Add the `crust-gluten-free` class if the gluten-free crust is selected -->
-      <section v-if="isSelected('gluten-free crust')" :class="{
-        crust: true
+      <section :class="{
+        crust: true,
+        'crust-gluten-free' : isSelected('gluten-free crust')
       }">
         <section class="cheese"></section>
         <!-- Add the `sauce-white` class if the white sauce is selected -->
         <section v-if="isSelected('white sauce')" :class="{
-          sauce: true
+          sauce: true,
+          'sauce-white' : isSelected('white sauce')
         }"></section>
       </section>
     </div>
