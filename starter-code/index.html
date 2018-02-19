@@ -19,7 +19,7 @@
     <!-- Controls -->
     <div class="panel controls">
       <ul>
-        <li v-for="ingredient in ingredients">
+        <li v-for="ingredient in ingredients" v-bind:class="{active : isSelected(ingredient.name)}" @click='toggle(ingredient.name)' >
           <!-- The button must have the `active` class if the ingredient is selected -->
           <!-- When the button is clicked, it should toggle the `selected` property of the corresponding ingredient object -->
           <button
@@ -28,6 +28,7 @@
               'btn-' + ingredient.name.replace(' ', '-')
             ]"
           >
+          {{ingredient.name | capitalize}}
             <!--
               Define a `capitalize` filter that will take a string as an argument
               and return it with the first letter in uppercase.
@@ -42,7 +43,7 @@
     <!-- Price -->
     <aside class="panel price">
       <h2>Your pizza's price</h2>
-      <b><!-- Put the base price of the pizza here --> cheese pizza</b>
+      <b><!-- Put the base price of the pizza here -->${{basePrice}} cheese pizza</b>
       <ul>
         <!-- List all selected ingredients with their price. Use a computed property. -->
       </ul>

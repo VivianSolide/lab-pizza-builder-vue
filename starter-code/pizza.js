@@ -29,7 +29,22 @@ const vm = new Vue({
   methods: {
     isSelected(ingredientName) {
       // Given the name of an ingredient, will return whether it is selected
-      return this.ingredients.find(ingredient => ingredient.name === ingredientName).selected
+      return this.ingredients.find(ingredient => ingredient.name === ingredientName).selected;
+    },
+    toggle(ingredientName) {
+      for (let i = 0; i < this.ingredients.length; i++) {
+        if (ingredientName === this.ingredients[i].name) {
+          this.ingredients[i].selected = !this.ingredients[i].selected
+        }
+      }
     }
-  }
+  },
+  filters: {
+    capitalize: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
+  },
+  
 });
