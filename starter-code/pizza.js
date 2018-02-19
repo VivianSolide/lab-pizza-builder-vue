@@ -37,14 +37,25 @@ const vm = new Vue({
           this.ingredients[i].selected = !this.ingredients[i].selected
         }
       }
-    }
+    },
   },
   filters: {
-    capitalize: function (value) {
+    capitalize(value) {
       if (!value) return ''
       value = value.toString()
       return value.charAt(0).toUpperCase() + value.slice(1)
     }
   },
-  
+  computed: {
+    listAllPricesSelected() {
+      return this.ingredients.filter(ingredient => ingredient.selected === true);
+    },
+    cartWithTotal() {
+      var price = this.basePrice;
+      for (let i = 0; i < this.listAllPricesSelected.length; i++) {
+        price += this.listAllPricesSelected[i].price;
+      }
+      return price;
+    }
+  },
 });
